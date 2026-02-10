@@ -22,6 +22,7 @@ guiNewAccount/ModelNewAccount.class
 guiAdminHome/ViewAdminHome.class
 guiUserUpdate/ControllerUserUpdate.class
 guiMultipleRoleDispatch/ModelMultipleRoleDispatch.class
+applicationMain/ValidationUtil.class
 applicationMain/package-info.class
 applicationMain/FoundationsMain.class
 guiStudentHome/ViewStudentHome.class

@@ -1,6 +1,7 @@
 package guiEmailLogin;
 
 import javafx.stage.Stage;
+import applicationMain.ValidationUtil;
 import database.Database;
 import entityClasses.User;
 import guiUserLogin.ViewUserLogin;
@@ -37,15 +38,17 @@ public class ControllerEmailLogin {
 		String password = ViewEmailLogin.text_Password.getText();
 		
 		// Validate email address
-		if (email.isEmpty() || !email.contains("@")) {
-			ViewEmailLogin.alertLoginError.setContentText("Please enter a valid email address.");
+		String emailError = ValidationUtil.validateEmail(email);
+		if (emailError != null) {
+			ViewEmailLogin.alertLoginError.setContentText(emailError);
 			ViewEmailLogin.alertLoginError.showAndWait();
 			return;
 		}
 		
 		// Validate password
-		if (password.isEmpty()) {
-			ViewEmailLogin.alertLoginError.setContentText("Please enter your password.");
+		String passwordError = ValidationUtil.validatePassword(password);
+		if (passwordError != null) {
+			ViewEmailLogin.alertLoginError.setContentText(passwordError);
 			ViewEmailLogin.alertLoginError.showAndWait();
 			return;
 		}

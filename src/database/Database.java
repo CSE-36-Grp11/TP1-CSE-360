@@ -891,22 +891,122 @@ public class Database {
 		String query = "SELECT * FROM userDB WHERE username = ?";
 		try (PreparedStatement pstmt = connection.prepareStatement(query)) {
 			pstmt.setString(1, username);
-	        ResultSet rs = pstmt.executeQuery();			
-			rs.next();
-	    	currentUsername = rs.getString(2);
-	    	currentPassword = rs.getString(3);
-	    	currentFirstName = rs.getString(4);
-	    	currentMiddleName = rs.getString(5);
-	    	currentLastName = rs.getString(6);
-	    	currentPreferredFirstName = rs.getString(7);
-	    	currentEmailAddress = rs.getString(8);
-	    	currentAdminRole = rs.getBoolean(9);
-	    	currentStudentRole = rs.getBoolean(10);
-	    	currentStaffRole = rs.getBoolean(11);
-			return true;
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                currentUsername = rs.getString("userName");
+                currentPassword = rs.getString("password");
+                currentFirstName = rs.getString("firstName");
+                currentMiddleName = rs.getString("middleName");
+                currentLastName = rs.getString("lastName");
+                currentPreferredFirstName = rs.getString("preferredFirstName");
+                currentEmailAddress = rs.getString("emailAddress");
+                currentAdminRole = rs.getBoolean("adminRole");
+                currentStudentRole = rs.getBoolean("studentRole");
+                currentStaffRole = rs.getBoolean("staffRole");
+                return true;
+            }
 	    } catch (SQLException e) {
 			return false;
 	    }
+		return false;
+	}
+
+	/*******
+	 * <p> Method: boolean updatePassword(String username, String newPassword) </p>
+	 * 
+	 * <p> Description: Update the password for a specified user.</p>
+	 * 
+	 * @param username is the user to update
+	 * @param newPassword is the new password value
+	 * 
+	 * @return true if the update was successful, else false
+	 */
+	public boolean updatePassword(String username, String newPassword) {
+		String query = "UPDATE userDB SET password = ? WHERE userName = ?";
+		try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+			pstmt.setString(1, newPassword);
+			pstmt.setString(2, username);
+			int rows = pstmt.executeUpdate();
+			if (rows > 0) {
+				if (username != null && username.equals(currentUsername)) {
+					currentPassword = newPassword;
+				}
+				return true;
+			}
+		} catch (SQLException e) {
+			return false;
+		}
+		return false;
+	}
+
+	/*******
+	 * <p> Method: boolean deleteUser(String username) </p>
+	 * 
+	 * <p> Description: Remove the specified user from the database.</p>
+	 * 
+	 * @param username is the user to delete
+	 * 
+	 * @return true if the delete was successful, else false
+	 */
+	public boolean deleteUser(String username) {
+		String query = "DELETE FROM userDB WHERE userName = ?";
+		try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+			pstmt.setString(1, username);
+			int rows = pstmt.executeUpdate();
+			if (rows > 0) {
+				if (username != null && username.equals(currentUsername)) {
+					currentUsername = null;
+					currentPassword = null;
+					currentFirstName = null;
+					currentMiddleName = null;
+					currentLastName = null;
+					currentPreferredFirstName = null;
+					currentEmailAddress = null;
+					currentAdminRole = false;
+					currentStudentRole = false;
+					currentStaffRole = false;
+				}
+				return true;
+			}
+		} catch (SQLException e) {
+			return false;
+		}
+		return false;
+	}
+
+	/*******
+	 * <p> Method: List<User> getAllUsers() </p>
+	 * 
+	 * <p> Description: Fetch all user records in the database.</p>
+	 * 
+	 * @return a list of User objects (may be empty)
+	 */
+	public List<User> getAllUsers() {
+		List<User> users = new ArrayList<User>();
+		String query = "SELECT userName, password, firstName, middleName, lastName, "
+				+ "preferredFirstName, emailAddress, adminRole, studentRole, staffRole FROM userDB "
+				+ "ORDER BY userName";
+		try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				User user = new User(
+					rs.getString("userName"),
+					rs.getString("password"),
+					rs.getString("firstName"),
+					rs.getString("middleName"),
+					rs.getString("lastName"),
+					rs.getString("preferredFirstName"),
+					rs.getString("emailAddress"),
+					rs.getBoolean("adminRole"),
+					rs.getBoolean("studentRole"),
+					rs.getBoolean("staffRole")
+				);
+				users.add(user);
+			}
+		} catch (SQLException e) {
+			return users;
+		}
+		return users;
 	}
 	
 	

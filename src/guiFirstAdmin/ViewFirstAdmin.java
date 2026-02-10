@@ -48,7 +48,7 @@ public class ViewFirstAdmin {
 	// for the user to specify a username for this account and two copies of the password to be
 	// used (they must match), a button to request that the account be established, and a quit
 	// but to abort the action and stop the application.
-	private static Label label_ApplicationTitle = new Label("Foundation Application Startup Page");
+	private static Label label_ApplicationTitle = new Label("Foundation Application (TP1)");
 	private static Label label_TitleLine1 = 
 			new Label(" You are the first user.  You must be an administrator.");
 	
@@ -61,10 +61,6 @@ public class ViewFirstAdmin {
 	protected static PasswordField text_AdminPassword1 = new PasswordField();
 	protected static PasswordField text_AdminPassword2 = new PasswordField();
 	private static Button button_AdminSetup = new Button("Setup Admin Account");
-
-	// Email login option
-	private static Label label_OrSeparator = new Label("or");
-	private static Button button_GoogleEmailLogin = new Button("Sign in with Email");
 
 	// This alert is used should the user enter two passwords that do not match
 	protected static Alert alertUsernamePasswordError = new Alert(AlertType.INFORMATION);
@@ -184,14 +180,6 @@ public class ViewFirstAdmin {
 			ControllerFirstAdmin.doSetupAdmin(theStage,1); 
 			});
 
-		// Set up the "or" separator label
-		setupLabelUI(label_OrSeparator, "Arial", 16, 200, Pos.CENTER, 475, 260);
-
-		// Set up the Google Email Login button
-		setupButtonUI(button_GoogleEmailLogin, "Dialog", 18, 200, Pos.CENTER, 475, 290);
-		button_GoogleEmailLogin.setStyle("-fx-background-color: #4285F4; -fx-text-fill: white;");
-		button_GoogleEmailLogin.setOnAction((_) -> {ControllerFirstAdmin.doEmailLogin(theStage); });
-
 		// Label to display the Passwords do not match error message
 		setupLabelUI(label_PasswordsDoNotMatch, "Arial", 18, width, Pos.CENTER, 0, 300);
 
@@ -201,7 +189,7 @@ public class ViewFirstAdmin {
 		// Place all of the just-initialized GUI elements into the pane
 		theRootPane.getChildren().addAll(label_ApplicationTitle, label_TitleLine1,
 				label_TitleLine2, text_AdminUsername, text_AdminPassword1, 
-				text_AdminPassword2, button_AdminSetup, label_OrSeparator, button_GoogleEmailLogin,
+				text_AdminPassword2, button_AdminSetup,
 				label_PasswordsDoNotMatch, button_Quit);
 	}
 	

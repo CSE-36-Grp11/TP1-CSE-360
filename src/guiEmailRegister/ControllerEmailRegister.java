@@ -1,6 +1,7 @@
 package guiEmailRegister;
 
 import javafx.stage.Stage;
+import applicationMain.ValidationUtil;
 import database.Database;
 import entityClasses.User;
 import guiUserLogin.ViewUserLogin;
@@ -39,15 +40,17 @@ public class ControllerEmailRegister {
 		String password2 = ViewEmailRegister.text_Password2.getText();
 		
 		// Validate email address
-		if (email.isEmpty() || !email.contains("@") || !email.contains(".")) {
-			ViewEmailRegister.alertEmailError.setContentText("Please enter a valid email address.");
+		String emailError = ValidationUtil.validateEmail(email);
+		if (emailError != null) {
+			ViewEmailRegister.alertEmailError.setContentText(emailError);
 			ViewEmailRegister.alertEmailError.showAndWait();
 			return;
 		}
 		
 		// Validate username
-		if (username.isEmpty()) {
-			ViewEmailRegister.alertEmailError.setContentText("Please enter a username.");
+		String usernameError = ValidationUtil.validateAsuUserId(username);
+		if (usernameError != null) {
+			ViewEmailRegister.alertEmailError.setContentText(usernameError);
 			ViewEmailRegister.alertEmailError.showAndWait();
 			return;
 		}
@@ -60,12 +63,18 @@ public class ControllerEmailRegister {
 		}
 		
 		// Validate passwords
-		if (password1.isEmpty() || password2.isEmpty()) {
-			ViewEmailRegister.alertPasswordError.setContentText("Please enter and confirm your password.");
+		String passwordError = ValidationUtil.validatePassword(password1);
+		if (passwordError != null) {
+			ViewEmailRegister.alertPasswordError.setContentText(passwordError);
 			ViewEmailRegister.alertPasswordError.showAndWait();
 			return;
 		}
-		
+		if (password2 == null || password2.isEmpty()) {
+			ViewEmailRegister.alertPasswordError.setContentText("Password is required.");
+			ViewEmailRegister.alertPasswordError.showAndWait();
+			return;
+		}
+
 		if (!password1.equals(password2)) {
 			ViewEmailRegister.alertPasswordError.setContentText("Passwords do not match. Please try again.");
 			ViewEmailRegister.alertPasswordError.showAndWait();

@@ -2,6 +2,7 @@ package guiNewAccount;
 
 import java.sql.SQLException;
 
+import applicationMain.ValidationUtil;
 import database.Database;
 import entityClasses.User;
 
@@ -64,8 +65,29 @@ public class ControllerNewAccount {
 		
 		// Fetch the username and password. (We use the first of the two here, but we will validate
 		// that the two password fields are the same before we do anything with it.)
-		String username = ViewNewAccount.text_Username.getText();
+		String username = ViewNewAccount.text_Username.getText().trim();
 		String password = ViewNewAccount.text_Password1.getText();
+		
+		String usernameError = ValidationUtil.validateAsuUserId(username);
+		if (usernameError != null) {
+			ViewNewAccount.alertUsernamePasswordError.setContentText(usernameError);
+			ViewNewAccount.alertUsernamePasswordError.showAndWait();
+			return;
+		}
+		
+		String passwordError = ValidationUtil.validatePassword(password);
+		if (passwordError != null) {
+			ViewNewAccount.alertUsernamePasswordError.setContentText(passwordError);
+			ViewNewAccount.alertUsernamePasswordError.showAndWait();
+			return;
+		}
+		
+		String password2 = ViewNewAccount.text_Password2.getText();
+		if (password2 == null || password2.isEmpty()) {
+			ViewNewAccount.alertUsernamePasswordError.setContentText("Password is required.");
+			ViewNewAccount.alertUsernamePasswordError.showAndWait();
+			return;
+		}
 		
 		// Display key information to the log
 		System.out.println("** Account for Username: " + username + "; theInvitationCode: "+
