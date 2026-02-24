@@ -244,6 +244,25 @@ public class ControllerAddRemoveRoles {
 		// If the selection is the list header (e.g., "<Select a role>") don't do anything
 		if (ViewAddRemoveRoles.theRemoveRole.compareTo("<Select a role>") != 0) {
 			
+			// Prevent removing own admin role
+			if (ViewAddRemoveRoles.theRemoveRole.compareTo("Admin") == 0 &&
+					ViewAddRemoveRoles.theSelectedUser.compareTo(
+							ViewAddRemoveRoles.theUser.getUserName()) == 0) {
+				ViewAddRemoveRoles.alertRoleError.setContentText(
+						"You cannot remove your own Admin role.");
+				ViewAddRemoveRoles.alertRoleError.showAndWait();
+				return;
+			}
+			
+			// Prevent removing the last admin role in the system
+			if (ViewAddRemoveRoles.theRemoveRole.compareTo("Admin") == 0 &&
+					theDatabase.getNumberOfAdmins() <= 1) {
+				ViewAddRemoveRoles.alertRoleError.setContentText(
+						"At least one Admin user must remain in the system.");
+				ViewAddRemoveRoles.alertRoleError.showAndWait();
+				return;
+			}
+			
 			// If an actual role was selected, update the database entry for that user for the role
 			if (theDatabase.updateUserRole(ViewAddRemoveRoles.theSelectedUser, 
 					ViewAddRemoveRoles.theRemoveRole, "false") ) {

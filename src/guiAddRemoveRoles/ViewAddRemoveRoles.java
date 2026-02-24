@@ -6,6 +6,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -69,6 +70,7 @@ public class ViewAddRemoveRoles {
 	protected static List<String> removeList = new ArrayList<String>();
 	protected static Button button_RemoveRole = new Button("Remove This Role");
 	protected static Label label_CurrentRoles = new Label("This user's current roles:");
+	protected static Alert alertRoleError = new Alert(Alert.AlertType.INFORMATION);
 	protected static Label label_SelectRoleToBeAdded = new Label("Select a role to be added:");
 	protected static ComboBox <String> combobox_SelectRoleToAdd = new ComboBox <String>();	
 	protected static Label label_SelectRoleToBeRemoved = new Label("Select a role to be removed:");
@@ -185,6 +187,9 @@ public class ViewAddRemoveRoles {
 		setupButtonUI(button_UpdateThisUser, "Dialog", 18, 170, Pos.CENTER, 610, 45);
 		button_UpdateThisUser.setOnAction((_) -> 
 			{guiUserUpdate.ViewUserUpdate.displayUserUpdate(theStage, theUser); });
+		
+		alertRoleError.setTitle("Role Update Error");
+		alertRoleError.setHeaderText(null);
 		
 		// GUI Area 2a
 		setupLabelUI(label_SelectUser, "Arial", 20, 300, Pos.BASELINE_LEFT, 20, 130);

@@ -1,0 +1,355 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< edu.asu.cse360:foundations >---------------------
+[INFO] Building Foundations SP26 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> javadoc:3.12.0:javadoc (default-cli) > generate-sources @ foundations >>>
+[INFO] 
+[INFO] <<< javadoc:3.12.0:javadoc (default-cli) < generate-sources @ foundations <<<
+[INFO] 
+[INFO] 
+[INFO] --- javadoc:3.12.0:javadoc (default-cli) @ foundations ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.726 s
+[INFO] Finished at: 2026-02-21T21:41:05-07:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-javadoc-plugin:3.12.0:javadoc (default-cli) on project foundations: An error has occurred in Javadoc report generation: 
+[ERROR] Exit code: 1
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiAdminHome/ControllerAdminHome.java:293: warning: no comment
+[ERROR] 	protected static void openDiscussionBoard() {
+[ERROR] 	                      ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiDiscussion/ControllerDiscussionBoard.java:5: warning: no comment
+[ERROR] public class ControllerDiscussionBoard {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiDiscussion/ControllerDiscussionBoard.java:9: warning: no comment
+[ERROR] 	public ControllerDiscussionBoard() {
+[ERROR] 	       ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiDiscussion/ControllerDiscussionBoard.java:16: warning: no comment
+[ERROR] 	protected static void createPost() {
+[ERROR] 	                      ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiDiscussion/ControllerDiscussionBoard.java:52: warning: no comment
+[ERROR] 	protected static void createReply() {
+[ERROR] 	                      ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiDiscussion/ControllerDiscussionBoard.java:32: warning: no comment
+[ERROR] 	protected static void deletePost() {
+[ERROR] 	                      ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiDiscussion/ControllerDiscussionBoard.java:67: warning: no comment
+[ERROR] 	protected static void listRepliesForPost() {
+[ERROR] 	                      ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiDiscussion/ControllerDiscussionBoard.java:72: warning: no comment
+[ERROR] 	protected static void performReturn() {
+[ERROR] 	                      ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiDiscussion/ControllerDiscussionBoard.java:47: warning: no comment
+[ERROR] 	protected static void searchPostsByKeyword() {
+[ERROR] 	                      ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiDiscussion/ControllerDiscussionBoard.java:12: warning: no comment
+[ERROR] 	protected static void showAllPosts() {
+[ERROR] 	                      ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiEmailLogin/ControllerEmailLogin.java:21: warning: use of default constructor, which does not provide a comment
+[ERROR] public class ControllerEmailLogin {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiEmailRegister/ControllerEmailRegister.java:21: warning: use of default constructor, which does not provide a comment
+[ERROR] public class ControllerEmailRegister {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiFirstAdmin/ControllerFirstAdmin.java:106: warning: no @param for ps
+[ERROR] 	protected static void doSetupAdmin(Stage ps, int r) {
+[ERROR] 	                      ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiFirstAdmin/ControllerFirstAdmin.java:106: warning: no @param for r
+[ERROR] 	protected static void doSetupAdmin(Stage ps, int r) {
+[ERROR] 	                      ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiFirstAdmin/ControllerFirstAdmin.java:168: warning: no @param for ps
+[ERROR] 	protected static void doEmailLogin(Stage ps) {
+[ERROR] 	                      ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiFirstAdmin/ControllerFirstAdmin.java:46: warning: no comment
+[ERROR] 	protected static Database theDatabase = applicationMain.FoundationsMain.database;		
+[ERROR] 	                          ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiInviteUsers/ControllerInviteUsers.java:93: warning: no @param for theStage
+[ERROR] 	public static void returnToAdminHome(Stage theStage) {
+[ERROR] 	                   ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiInviteUsers/ControllerInviteUsers.java:23: warning: use of default constructor, which does not provide a comment
+[ERROR] public class ControllerInviteUsers {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiStaffHome/ControllerStaffHome.java:76: warning: no comment
+[ERROR] 	protected static void performOpenDiscussion() {
+[ERROR] 	                      ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiStudentHome/ControllerStudentHome.java:76: warning: no comment
+[ERROR] 	protected static void performOpenDiscussion() {
+[ERROR] 	                      ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiUserLogin/ControllerUserLogin.java:66: warning: no @param for ts
+[ERROR] 	protected static void doLogin(Stage ts) {
+[ERROR] 	                      ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiUserLogin/ControllerUserLogin.java:136: warning: no @param for ts
+[ERROR] 	protected static void doInvitationCode(Stage ts) {
+[ERROR] 	                      ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiUserLogin/ControllerUserLogin.java:162: warning: no @param for ts
+[ERROR] 	protected static void doCreateNewAccount(Stage ts) {
+[ERROR] 	                      ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiUserUpdate/ControllerUserUpdate.java:6: warning: no comment
+[ERROR] public class ControllerUserUpdate {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiUserUpdate/ControllerUserUpdate.java:6: warning: use of default constructor, which does not provide a comment
+[ERROR] public class ControllerUserUpdate {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:300: error: unknown attribute: User
+[ERROR]  *  starting with "<Select User>" at the start of the list. </p>
+[ERROR]                            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:300: error: end tag missing: </Select>
+[ERROR]  *  starting with "<Select User>" at the start of the list. </p>
+[ERROR]                    ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1035: error: unknown tag: User
+[ERROR] 	 * <p> Method: List<User> getAllUsers() </p>
+[ERROR] 	                   ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1314: warning: no @param for username
+[ERROR] 	public int createPost(String username, String title, String content, String threadName) {
+[ERROR] 	           ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1314: warning: no @param for title
+[ERROR] 	public int createPost(String username, String title, String content, String threadName) {
+[ERROR] 	           ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1314: warning: no @param for content
+[ERROR] 	public int createPost(String username, String title, String content, String threadName) {
+[ERROR] 	           ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1314: warning: no @param for threadName
+[ERROR] 	public int createPost(String username, String title, String content, String threadName) {
+[ERROR] 	           ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1339: warning: no @param for username
+[ERROR] 	public String getPostsByUser(String username) {
+[ERROR] 	              ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1367: warning: no @param for threadName
+[ERROR] 	public String getAllPosts(String threadName) {
+[ERROR] 	              ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1405: warning: no @param for postId
+[ERROR] 	public String getPostDetails(int postId) {
+[ERROR] 	              ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1432: warning: no @param for postId
+[ERROR] 	public void addReply(int postId, String username, String content) {
+[ERROR] 	            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1432: warning: no @param for username
+[ERROR] 	public void addReply(int postId, String username, String content) {
+[ERROR] 	            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1432: warning: no @param for content
+[ERROR] 	public void addReply(int postId, String username, String content) {
+[ERROR] 	            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1451: warning: no @param for postId
+[ERROR] 	public String getReplies(int postId) {
+[ERROR] 	              ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1475: warning: no @param for postId
+[ERROR] 	public void deletePost(int postId) {
+[ERROR] 	            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1492: warning: no @param for keyword
+[ERROR] 	public String searchPosts(String keyword, String threadName) {
+[ERROR] 	              ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1492: warning: no @param for threadName
+[ERROR] 	public String searchPosts(String keyword, String threadName) {
+[ERROR] 	              ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1533: warning: no @param for postId
+[ERROR] 	public boolean isPostOwner(int postId, String username) {
+[ERROR] 	               ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1533: warning: no @param for username
+[ERROR] 	public boolean isPostOwner(int postId, String username) {
+[ERROR] 	               ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1552: warning: no @param for threadName
+[ERROR] 	public void createThread(String threadName, String description, String staffUsername) {
+[ERROR] 	            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1552: warning: no @param for description
+[ERROR] 	public void createThread(String threadName, String description, String staffUsername) {
+[ERROR] 	            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1552: warning: no @param for staffUsername
+[ERROR] 	public void createThread(String threadName, String description, String staffUsername) {
+[ERROR] 	            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1594: warning: no @param for threadName
+[ERROR] 	public void deleteThread(String threadName) {
+[ERROR] 	            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1609: warning: no @param for threadName
+[ERROR] 	public void updateThread(String threadName, String newDescription) {
+[ERROR] 	            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/database/Database.java:1609: warning: no @param for newDescription
+[ERROR] 	public void updateThread(String threadName, String newDescription) {
+[ERROR] 	            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/DiscussionService.java:11: warning: no comment
+[ERROR] public class DiscussionService {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/DiscussionService.java:31: warning: no comment
+[ERROR] 	public String createPost(String title, String body, String authorAsuUserId) {
+[ERROR] 	              ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/DiscussionService.java:61: warning: no comment
+[ERROR] 	public String createReplyByPostTitle(String postTitleInput, String body, String authorAsuUserId) {
+[ERROR] 	              ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/DiscussionService.java:49: warning: no comment
+[ERROR] 	public String deletePostByTitle(String titleInput) {
+[ERROR] 	              ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/DiscussionService.java:27: warning: no comment
+[ERROR] 	public static DiscussionService getInstance() {
+[ERROR] 	                                ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/DiscussionService.java:81: warning: no comment
+[ERROR] 	public String listAllPostsText() {
+[ERROR] 	              ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/DiscussionService.java:100: warning: no comment
+[ERROR] 	public String listAllRepliesText() {
+[ERROR] 	              ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/DiscussionService.java:85: warning: no comment
+[ERROR] 	public String listPostSubsetByKeywordText(String keyword) {
+[ERROR] 	              ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/DiscussionService.java:90: warning: no comment
+[ERROR] 	public String listRepliesForPostTitle(String postTitleInput) {
+[ERROR] 	              ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/FoundationsMain.java:119: error: @param name not found
+[ERROR] 	 * @param String[] args   The array of command lines parameters.  These are not used.
+[ERROR] 	          ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/FoundationsMain.java:121: warning: no @param for args
+[ERROR] 	public static void main(String[] args) {
+[ERROR] 	                   ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/FoundationsMain.java:79: warning: no comment
+[ERROR] 	public static int activeHomePage = 0;		// Which role's home page is currently active?
+[ERROR] 	                  ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/FoundationsMain.java:76: warning: no comment
+[ERROR] 	public static Database database = new Database();
+[ERROR] 	                       ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/FoundationsMain.java:71: warning: no comment
+[ERROR] 	public final static double WINDOW_HEIGHT = 600;
+[ERROR] 	                           ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/FoundationsMain.java:70: warning: no comment
+[ERROR] 	public final static double WINDOW_WIDTH = 800;
+[ERROR] 	                           ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/FoundationsMain.java:60: warning: use of default constructor, which does not provide a comment
+[ERROR] public class FoundationsMain extends Application {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiTools/GUISingleRoleDispatch.java:69: error: @param name not found
+[ERROR] 	 * @param theRoot specifies the JavaFX Pane to be used for this GUI and it's methods
+[ERROR] 	          ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiTools/GUISingleRoleDispatch.java:71: error: @param name not found
+[ERROR] 	 * @param database specifies the Database to be used by this GUI and it's methods
+[ERROR] 	          ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/HW2CrudValidationTest.java:8: warning: no comment
+[ERROR] public class HW2CrudValidationTest {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/HW2CrudValidationTest.java:8: warning: use of default constructor, which does not provide a comment
+[ERROR] public class HW2CrudValidationTest {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/applicationMain/HW2CrudValidationTest.java:13: warning: no comment
+[ERROR] 	public static void main(String[] args) {
+[ERROR] 	                   ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiUserLogin/Model.java:3: warning: no comment
+[ERROR] public class Model {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiUserLogin/Model.java:3: warning: use of default constructor, which does not provide a comment
+[ERROR] public class Model {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiUserUpdate/Model.java:3: warning: no comment
+[ERROR] public class Model {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiUserUpdate/Model.java:3: warning: use of default constructor, which does not provide a comment
+[ERROR] public class Model {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiAddRemoveRoles/ModelAddRemoveRoles.java:18: warning: use of default constructor, which does not provide a comment
+[ERROR] public class ModelAddRemoveRoles {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiAdminHome/ModelAdminHome.java:18: warning: use of default constructor, which does not provide a comment
+[ERROR] public class ModelAdminHome {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiFirstAdmin/ModelFirstAdmin.java:18: warning: use of default constructor, which does not provide a comment
+[ERROR] public class ModelFirstAdmin {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiMultipleRoleDispatch/ModelMultipleRoleDispatch.java:18: warning: use of default constructor, which does not provide a comment
+[ERROR] public class ModelMultipleRoleDispatch {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiNewAccount/ModelNewAccount.java:17: warning: use of default constructor, which does not provide a comment
+[ERROR] public class ModelNewAccount {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiStaffHome/ModelStaffHome.java:3: warning: no comment
+[ERROR] public class ModelStaffHome {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiStaffHome/ModelStaffHome.java:3: warning: use of default constructor, which does not provide a comment
+[ERROR] public class ModelStaffHome {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiStudentHome/ModelStudentHome.java:3: warning: no comment
+[ERROR] public class ModelStudentHome {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiStudentHome/ModelStudentHome.java:3: warning: use of default constructor, which does not provide a comment
+[ERROR] public class ModelStudentHome {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/Post.java:3: warning: no comment
+[ERROR] public class Post {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/Post.java:12: warning: no comment
+[ERROR] 	public Post(int postId, String title, String body, String courseTag, String authorAsuUserId, boolean resolved) {
+[ERROR] 	       ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/Post.java:53: warning: no comment
+[ERROR] 	public String getAuthorAsuUserId() {
+[ERROR] 	              ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/Post.java:37: warning: no comment
+[ERROR] 	public String getBody() {
+[ERROR] 	              ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/Post.java:45: warning: no comment
+[ERROR] 	public String getCourseTag() {
+[ERROR] 	              ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/Post.java:21: warning: no comment
+[ERROR] 	public int getPostId() {
+[ERROR] 	           ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/Post.java:29: warning: no comment
+[ERROR] 	public String getTitle() {
+[ERROR] 	              ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/Post.java:61: warning: no comment
+[ERROR] 	public boolean isResolved() {
+[ERROR] 	               ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/Post.java:57: warning: no comment
+[ERROR] 	public void setAuthorAsuUserId(String authorAsuUserId) {
+[ERROR] 	            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/Post.java:41: warning: no comment
+[ERROR] 	public void setBody(String body) {
+[ERROR] 	            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/Post.java:49: warning: no comment
+[ERROR] 	public void setCourseTag(String courseTag) {
+[ERROR] 	            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/Post.java:25: warning: no comment
+[ERROR] 	public void setPostId(int postId) {
+[ERROR] 	            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/Post.java:65: warning: no comment
+[ERROR] 	public void setResolved(boolean resolved) {
+[ERROR] 	            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/Post.java:33: warning: no comment
+[ERROR] 	public void setTitle(String title) {
+[ERROR] 	            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/PostList.java:8: warning: no comment
+[ERROR] public class PostList {
+[ERROR]        ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/PostList.java:13: warning: no comment
+[ERROR] 	public PostList() {
+[ERROR] 	       ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/PostList.java:117: warning: no comment
+[ERROR] 	public void clearSubset() {
+[ERROR] 	            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/PostList.java:18: warning: no comment
+[ERROR] 	public String createPost(Post post) {
+[ERROR] 	              ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/PostList.java:81: warning: no comment
+[ERROR] 	public boolean deletePost(int postId) {
+[ERROR] 	               ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/PostList.java:45: warning: no comment
+[ERROR] 	public List<Post> readAllPosts() {
+[ERROR] 	                  ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/PostList.java:36: warning: no comment
+[ERROR] 	public Post readPostById(int postId) {
+[ERROR] 	            ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/entityClasses/PostList.java:49: warning: no comment
+[ERROR] 	public List<Post> readSubsetPosts() {
+[ERROR] 	                  ^
+[ERROR] /Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/src/guiAddRemoveRoles/ViewAddRemoveRoles.java:167: error: unexpected end tag: </p>
+[ERROR] 	 * fields using the displayAddRempoveRoles method.</p>
+[ERROR] 	                                                  ^
+[ERROR] 7 errors
+[ERROR] 100 warnings
+[ERROR] Command line was: /opt/homebrew/Cellar/openjdk/25.0.2/libexec/openjdk.jdk/Contents/Home/bin/javadoc -J-Duser.language= -J-Duser.country= @options @argfile
+[ERROR] 
+[ERROR] Refer to the generated Javadoc files in '/Users/anirudhyellapragada/ASU-CSE360-SP26/HW2 Project Off of TP1/target/reports/apidocs' dir.
+[ERROR] 
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

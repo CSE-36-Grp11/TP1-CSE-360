@@ -65,10 +65,10 @@ public class ControllerUserLogin {
 	 */	
 	protected static void doLogin(Stage ts) {
 		theStage = ts;
-		String username = ViewUserLogin.text_Username.getText();
+		String username = ViewUserLogin.text_Username.getText().trim();
 		String password = ViewUserLogin.text_Password.getText();
-    	boolean loginResult = false;
     	
+    	// Validate username and password format
     	String usernameError = ValidationUtil.validateAsuUserId(username);
     	if (usernameError != null) {
     		ViewUserLogin.alertUsernamePasswordError.setContentText(usernameError);
@@ -83,91 +83,83 @@ public class ControllerUserLogin {
     		return;
     	}
     	
-		// Fetch the user and verify the username
-     	if (theDatabase.getUserAccountDetails(username) == false) {
-     		// Don't provide too much information.  Don't say the username is invalid or the
-     		// password is invalid.  Just say the pair is invalid.
-    		ViewUserLogin.alertUsernamePasswordError.setContentText(
-    				"Incorrect username/password. Try again!");
+		// Check if user exists in database
+     	if (!theDatabase.getUserAccountDetails(username)) {
+    		ViewUserLogin.alertUsernamePasswordError.setContentText("Incorrect username/password. Try again!");
     		ViewUserLogin.alertUsernamePasswordError.showAndWait();
     		return;
     	}
-		// System.out.println("*** Username is valid");
 		
-		// Check to see that the login password matches the account password
+		// Check if password matches
     	String actualPassword = theDatabase.getCurrentPassword();
-    	
-    	if (password.compareTo(actualPassword) != 0) {
-    		ViewUserLogin.alertUsernamePasswordError.setContentText(
-    				"Incorrect username/password. Try again!");
+    	if (!password.equals(actualPassword)) {
+    		ViewUserLogin.alertUsernamePasswordError.setContentText("Incorrect username/password. Try again!");
     		ViewUserLogin.alertUsernamePasswordError.showAndWait();
     		return;
     	}
-		// System.out.println("*** Password is valid for this user");
 		
-		// Establish this user's details
+		// Create user object with data from database
     	User user = new User(username, password, theDatabase.getCurrentFirstName(), 
     			theDatabase.getCurrentMiddleName(), theDatabase.getCurrentLastName(), 
     			theDatabase.getCurrentPreferredFirstName(), theDatabase.getCurrentEmailAddress(), 
     			theDatabase.getCurrentAdminRole(), 
     			theDatabase.getCurrentStudentRole(), theDatabase.getCurrentStaffRole());
     	
-    	// See which home page dispatch to use
-		int numberOfRoles = theDatabase.getNumberOfRoles(user);		
-		// System.out.println("*** The number of roles: "+ numberOfRoles);
+    	// Check how many roles this user has
+		int numberOfRoles = theDatabase.getNumberOfRoles(user);
+		
+		// If user has one role, go to that role's home page
 		if (numberOfRoles == 1) {
-			// Single Account Home Page - The user has no choice here
-			
-			// Admin role
 			if (user.getAdminRole()) {
-				loginResult = theDatabase.loginAdmin(user);
-				if (loginResult) {
-					guiAdminHome.ViewAdminHome.displayAdminHome(theStage, user);
-				}
+				theDatabase.loginAdmin(user);
+				guiAdminHome.ViewAdminHome.displayAdminHome(theStage, user);
 			} else if (user.getStudentRole()) {
-				loginResult = theDatabase.loginStudent(user);
-				if (loginResult) {
-					guiStudentHome.ViewStudentHome.displayStudentHome(theStage, user);
-				}
+				theDatabase.loginStudent(user);
+				guiStudentHome.ViewStudentHome.displayStudentHome(theStage, user);
 			} else if (user.getStaffRole()) {
-				loginResult = theDatabase.loginStaff(user);
-				if (loginResult) {
-					guiStaffHome.ViewStaffHome.displayStaffHome(theStage, user);
-				}
-				// Other roles
-			} else {
-				System.out.println("***** UserLogin goToUserHome request has an invalid role");
+				theDatabase.loginStaff(user);
+				guiStaffHome.ViewStaffHome.displayStaffHome(theStage, user);
 			}
 		} else if (numberOfRoles > 1) {
-			// Multiple Account Home Page - The user chooses which role to play
-			// System.out.println("*** Going to displayMultipleRoleDispatch");
-			guiMultipleRoleDispatch.ViewMultipleRoleDispatch.
-				displayMultipleRoleDispatch(theStage, user);
+			guiMultipleRoleDispatch.ViewMultipleRoleDispatch.displayMultipleRoleDispatch(theStage, user);
 		}
 	}
 
-	
 	/**********
-	 * <p> Method: public doEmailLoginPage() </p>
+	 * <p> Method: public doInvitationCode() </p>
 	 * 
-	 * <p> Description: This method is called when the user clicks the "Login with Email" button.
-	 * It redirects to the email login page where users can authenticate with their email.
+	 * <p> Description: This method is called when the user enters an invitation code and
+	 * clicks the button. It validates the code and redirects to the email registration page
+	 * with the invited email prefilled.</p>
 	 * 
-	 */	
-	protected static void doEmailLoginPage(Stage ts) {
+	 */
+	protected static void doInvitationCode(Stage ts) {
 		theStage = ts;
-		guiEmailLogin.ViewEmailLogin.displayEmailLogin(theStage);
+		String code = ViewUserLogin.text_InvitationCode.getText().trim();
+		if (code.isEmpty()) {
+			ViewUserLogin.alertInvitationError.setContentText("Invitation code is required.");
+			ViewUserLogin.alertInvitationError.showAndWait();
+			return;
+		}
+		String email = theDatabase.getEmailAddressUsingCode(code);
+		if (email == null || email.isEmpty()) {
+			ViewUserLogin.alertInvitationError.setContentText("Invalid invitation code. Try again.");
+			ViewUserLogin.alertInvitationError.showAndWait();
+			return;
+		}
+		String role = theDatabase.getRoleGivenAnInvitationCode(code);
+		guiEmailRegister.ViewEmailRegister.displayEmailRegister(theStage, email, code, role);
 	}
-
 	
 	/**********
-	 * <p> Method: public doEmailRegistration() </p>
+	 * <p> Method: public doCreateNewAccount() </p>
 	 * 
-	 * <p> Description: This method is called when the user clicks the "Sign up with Email" button.
-	 * It redirects to the email registration page where users can create new accounts.
+	 * <p> Description: This method is called when the user clicks the "Create New Account" button
+	 * without an invitation code. It redirects to the email registration page where users can
+	 * create accounts without needing an invitation code.</p>
 	 * 
-	 */	
-	protected static void doEmailRegistration(Stage ts) {
+	 */
+	protected static void doCreateNewAccount(Stage ts) {
 		theStage = ts;
 		guiEmailRegister.ViewEmailRegister.displayEmailRegister(theStage);
 	}
@@ -177,13 +169,10 @@ public class ControllerUserLogin {
 	 * <p> Method: public performQuit() </p>
 	 * 
 	 * <p> Description: This method is called when the user has clicked on the Quit button.  Doing
-	 * this terminates the execution of the application.  All important data must be stored in the
-	 * database, so there is no cleanup required.  (This is important so we can minimize the impact
-	 * of crashed.)
+	 * this terminates the execution of the application.</p>
 	 * 
 	 */	
 	protected static void performQuit() {
-		System.out.println("Perform Quit");
 		System.exit(0);
 	}	
 

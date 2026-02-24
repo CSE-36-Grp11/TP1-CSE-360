@@ -70,6 +70,10 @@ public class ViewEmailRegister {
 	private static Pane theRootPane;			// The Pane that holds all the GUI widgets 
 	public static Scene theEmailRegisterScene = null;	
 	
+	// Invitation context
+	protected static String invitationCode = "";
+	protected static String invitationRole = "";
+	
 
 	/*-********************************************************************************************
 
@@ -94,9 +98,12 @@ public class ViewEmailRegister {
 		if (theView == null) theView = new ViewEmailRegister();
 		
 		text_Email.setText("");			// Clear the input fields
+		text_Email.setEditable(true);
 		text_Username.setText("");
 		text_Password1.setText("");
 		text_Password2.setText("");
+		invitationCode = "";
+		invitationRole = "";
 		
     	// Place all of the established GUI elements into the pane
     	theRootPane.getChildren().clear();
@@ -114,6 +121,45 @@ public class ViewEmailRegister {
 		// Set the title for the window, display the page
 		theStage.setTitle("CSE 360 Foundation Code: Email Registration");	
         theStage.setScene(theEmailRegisterScene);
+		theStage.show();
+	}
+
+	/**********
+	 * <p> Method: displayEmailRegister(Stage ps, String email, String code, String role) </p>
+	 * 
+	 * <p> Description: This method displays the EmailRegister page with the email prefilled from
+	 * an invitation code and locks the email field.</p>
+	 * 
+	 * @param ps specifies the JavaFX Stage to be used for this GUI and it's methods
+	 * @param email the invited email address to prefill
+	 * @param code the invitation code
+	 * @param role the invited role
+	 */
+	public static void displayEmailRegister(Stage ps, String email, String code, String role) {
+		theStage = ps;
+		if (theView == null) theView = new ViewEmailRegister();
+		text_Email.setText(email == null ? "" : email);
+		text_Email.setEditable(false);
+		text_Username.setText("");
+		text_Password1.setText("");
+		text_Password2.setText("");
+		invitationCode = code == null ? "" : code;
+		invitationRole = role == null ? "" : role;
+
+		theRootPane.getChildren().clear();
+		theRootPane.getChildren().addAll(
+				label_ApplicationTitle,
+				label_EmailRegistration, 
+				label_Instructions, 
+				label_Email, text_Email,
+				label_Username, text_Username,
+				label_Password, text_Password1,
+				label_ConfirmPassword, text_Password2, 
+				button_CreateAccount, 
+				button_Cancel);
+
+		theStage.setTitle("CSE 360 Foundation Code: Email Registration");
+		theStage.setScene(theEmailRegisterScene);
 		theStage.show();
 	}
 	

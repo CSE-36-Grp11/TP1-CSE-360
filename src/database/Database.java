@@ -56,6 +56,7 @@ public class Database {
 	private String currentLastName;
 	private String currentPreferredFirstName;
 	private String currentEmailAddress;
+	private String currentPhoneNumber;
 	private boolean currentAdminRole;
 	private boolean currentStudentRole;
 	private boolean currentStaffRole;
@@ -113,10 +114,18 @@ public class Database {
 				+ "lastName VARCHAR (255), "
 				+ "preferredFirstName VARCHAR(255), "
 				+ "emailAddress VARCHAR(255), "
+				+ "phoneNumber VARCHAR(20), "
 				+ "adminRole BOOL DEFAULT FALSE, "
 				+ "studentRole BOOL DEFAULT FALSE, "
 				+ "staffRole BOOL DEFAULT FALSE)";
 		statement.execute(userTable);
+		
+		// Add phoneNumber column if it doesn't exist (for existing databases)
+		try {
+			statement.execute("ALTER TABLE userDB ADD COLUMN IF NOT EXISTS phoneNumber VARCHAR(20)");
+		} catch (SQLException e) {
+			// Column might already exist, ignore
+		}
 		
 		// Create the invitation codes table
 	    String invitationCodesTable = "CREATE TABLE IF NOT EXISTS InvitationCodes ("
@@ -210,6 +219,27 @@ public class Database {
 		} catch (SQLException e) {
 	        return 0;
 	    }
+		return 0;
+	}
+
+/*******
+ * <p> Method: getNumberOfAdmins </p>
+ * 
+ * <p> Description: Returns an integer of the number of admin users currently in the database. </p>
+ * 
+ * @return the number of admin users in the database.
+ * 
+ */
+	public int getNumberOfAdmins() {
+		String query = "SELECT COUNT(*) AS count FROM userDB WHERE adminRole = TRUE";
+		try {
+			ResultSet resultSet = statement.executeQuery(query);
+			if (resultSet.next()) {
+				return resultSet.getInt("count");
+			}
+		} catch (SQLException e) {
+			return 0;
+		}
 		return 0;
 	}
 
@@ -875,6 +905,31 @@ public class Database {
 	    }
 	}
 	
+
+	/*******
+	 * <p> Method: void updatePhoneNumber(String username, String phoneNumber) </p>
+	 * 
+	 * <p> Description: Update the phone number of a user given that user's username and
+ * the new phone number.</p>
+ * 
+ * @param username is the username of the user
+ *  
+ * @param phoneNumber is the new phone number for the user
+ *  
+ */
+// update the phone number
+public void updatePhoneNumber(String username, String phoneNumber) {
+    String query = "UPDATE userDB SET phoneNumber = ? WHERE username = ?";
+    try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+        pstmt.setString(1, phoneNumber);
+        pstmt.setString(2, username);
+        pstmt.executeUpdate();
+        currentPhoneNumber = phoneNumber;
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+}
+
 	
 	/*******
 	 * <p> Method: boolean getUserAccountDetails(String username) </p>
@@ -900,6 +955,7 @@ public class Database {
                 currentLastName = rs.getString("lastName");
                 currentPreferredFirstName = rs.getString("preferredFirstName");
                 currentEmailAddress = rs.getString("emailAddress");
+                currentPhoneNumber = rs.getString("phoneNumber");
                 currentAdminRole = rs.getBoolean("adminRole");
                 currentStudentRole = rs.getBoolean("studentRole");
                 currentStaffRole = rs.getBoolean("staffRole");
@@ -962,6 +1018,7 @@ public class Database {
 					currentLastName = null;
 					currentPreferredFirstName = null;
 					currentEmailAddress = null;
+					currentPhoneNumber = null;
 					currentAdminRole = false;
 					currentStudentRole = false;
 					currentStaffRole = false;
@@ -984,7 +1041,7 @@ public class Database {
 	public List<User> getAllUsers() {
 		List<User> users = new ArrayList<User>();
 		String query = "SELECT userName, password, firstName, middleName, lastName, "
-				+ "preferredFirstName, emailAddress, adminRole, studentRole, staffRole FROM userDB "
+				+ "preferredFirstName, emailAddress, phoneNumber, adminRole, studentRole, staffRole FROM userDB "
 				+ "ORDER BY userName";
 		try (PreparedStatement pstmt = connection.prepareStatement(query)) {
 			ResultSet rs = pstmt.executeQuery();
@@ -1001,6 +1058,7 @@ public class Database {
 					rs.getBoolean("studentRole"),
 					rs.getBoolean("staffRole")
 				);
+				user.setPhoneNumber(rs.getString("phoneNumber"));
 				users.add(user);
 			}
 		} catch (SQLException e) {
@@ -1152,6 +1210,17 @@ public class Database {
 	 *  
 	 */
 	public String getCurrentEmailAddress() { return currentEmailAddress;};
+
+	
+	/*******
+	 * <p> Method: String getCurrentPhoneNumber() </p>
+	 * 
+	 * <p> Description: Get the current user's phone number.</p>
+	 * 
+	 * @return the phone number value is returned
+	 *  
+	 */
+	public String getCurrentPhoneNumber() { return currentPhoneNumber;};
 
 	
 	/*******

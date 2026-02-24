@@ -78,7 +78,8 @@ public class ViewAdminHome {
 	// This is a separator and it is used to partition the GUI for various tasks
 	private static Line line_Separator2 = new Line(20, 165, width-20, 165);
 	
-	// GUI Area 3: Removed invitation functionality per user request
+	// GUI Area 3: Invitation functionality for admins
+	protected static Button button_InviteUsers = new Button("Invite New Users");
 	
 	// This is a separator and it is used to partition the GUI for various tasks
 	private static Line line_Separator3 = new Line(20, 255, width-20, 255);
@@ -87,6 +88,7 @@ public class ViewAdminHome {
 	// admin buttons to use to perform other roles.  Many of these buttons are just stubs and an
 	// alert pops up to inform the admin of this fact.
 	protected static Button button_SetOnetimePassword = new Button("Set a One-Time Password");
+	protected static Button button_DiscussionBoard = new Button("Discussion Board");
 	protected static Button button_DeleteUser = new Button("Delete a User");
 	protected static Button button_ListUsers = new Button("List All Users");
 	protected static Button button_AddRemoveRoles = new Button("Add/Remove Roles");
@@ -99,6 +101,7 @@ public class ViewAdminHome {
 	// out, and on other pages a return is provided so the user can return to a previous page when
 	// the actions on that page are complete.  Be advised that in most cases in this code, the 
 	// return is to a fixed page as opposed to the actual page that invoked the pages.
+	protected static Button button_BackToLogin = new Button("Back to Login");
 	protected static Button button_Logout = new Button("Logout");
 	protected static Button button_Quit = new Button("Quit");
 
@@ -201,13 +204,19 @@ public class ViewAdminHome {
 		label_NumberOfUsers.setText("Number of users: " + 
 				theDatabase.getNumberOfUsers());
 	
-		// GUI Area 3 - Removed invitation functionality
+		// GUI Area 3 - Invitation functionality
 	
 		// GUI Area 4
 		setupButtonUI(button_SetOnetimePassword, "Dialog", 16, 250, Pos.CENTER, 20, 150);
 		button_SetOnetimePassword.setOnAction((_) -> 
 			{ControllerAdminHome.setOnetimePassword(); });
 
+		setupButtonUI(button_InviteUsers, "Dialog", 16, 250, Pos.CENTER, 280, 150);
+		button_InviteUsers.setOnAction((_) -> {ControllerAdminHome.inviteUsers(); });
+
+		setupButtonUI(button_DiscussionBoard, "Dialog", 16, 250, Pos.CENTER, 550, 150);
+		button_DiscussionBoard.setOnAction((_) -> {ControllerAdminHome.openDiscussionBoard(); });
+		
 		setupButtonUI(button_DeleteUser, "Dialog", 16, 250, Pos.CENTER, 20, 200);
 		button_DeleteUser.setOnAction((_) -> {ControllerAdminHome.deleteUser(); });
 
@@ -218,6 +227,9 @@ public class ViewAdminHome {
 		button_AddRemoveRoles.setOnAction((_) -> {ControllerAdminHome.addRemoveRoles(); });
 		
 		// GUI Area 5
+		setupButtonUI(button_BackToLogin, "Dialog", 18, 250, Pos.CENTER, 580, 540);
+		button_BackToLogin.setOnAction((_) -> {ControllerAdminHome.performBackToLogin(); });
+		
 		setupButtonUI(button_Logout, "Dialog", 18, 250, Pos.CENTER, 20, 540);
 		button_Logout.setOnAction((_) -> {ControllerAdminHome.performLogout(); });
     
@@ -229,13 +241,17 @@ public class ViewAdminHome {
 		// Place all of the widget items into the Root Pane's list of children
 		theRootPane.getChildren().addAll(
 			label_PageTitle, label_UserDetails, button_UpdateThisUser, line_Separator1,
-    		label_NumberOfUsers,
-    		line_Separator2,
-    		button_SetOnetimePassword,
-    		button_DeleteUser,
+			label_NumberOfUsers,
+			line_Separator2,
+			button_InviteUsers,
+			button_DiscussionBoard,
+			line_Separator3,
+			button_SetOnetimePassword,
+			button_DeleteUser,
     		button_ListUsers,
     		button_AddRemoveRoles,
     		line_Separator4, 
+    		button_BackToLogin,
     		button_Logout,
     		button_Quit
     		);

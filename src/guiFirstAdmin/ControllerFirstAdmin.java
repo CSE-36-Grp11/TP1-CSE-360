@@ -1,6 +1,7 @@
 package guiFirstAdmin;
 
 import java.sql.SQLException;
+import applicationMain.ValidationUtil;
 import database.Database;
 import entityClasses.User;
 import javafx.stage.Stage;
@@ -103,11 +104,34 @@ public class ControllerFirstAdmin {
 	 * 
 	 */
 	protected static void doSetupAdmin(Stage ps, int r) {
+		String username = ViewFirstAdmin.text_AdminUsername.getText();
+		String password1 = ViewFirstAdmin.text_AdminPassword1.getText();
+		String password2 = ViewFirstAdmin.text_AdminPassword2.getText();
+		
+		String usernameError = ValidationUtil.validateAsuUserId(username);
+		if (usernameError != null) {
+			ViewFirstAdmin.alertUsernamePasswordError.setContentText(usernameError);
+			ViewFirstAdmin.alertUsernamePasswordError.showAndWait();
+			return;
+		}
+		
+		String passwordError = ValidationUtil.validatePassword(password1);
+		if (passwordError != null) {
+			ViewFirstAdmin.alertUsernamePasswordError.setContentText(passwordError);
+			ViewFirstAdmin.alertUsernamePasswordError.showAndWait();
+			return;
+		}
+		
+		if (password2 == null || password2.isEmpty()) {
+			ViewFirstAdmin.alertUsernamePasswordError.setContentText("Password is required.");
+			ViewFirstAdmin.alertUsernamePasswordError.showAndWait();
+			return;
+		}
 		
 		// Make sure the two passwords are the same
-		if (adminPassword1.compareTo(adminPassword2) == 0) {
+		if (password1.compareTo(password2) == 0) {
         	// Create the passwords and proceed to the user home page
-        	User user = new User(adminUsername, adminPassword1, "", "", "", "", "", true, false, 
+	        	User user = new User(username, password1, "", "", "", "", "", true, false, 
         			false);
             try {
             	// Create a new User object with admin role and register in the database

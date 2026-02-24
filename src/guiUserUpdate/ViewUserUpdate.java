@@ -71,6 +71,7 @@ public class ViewUserUpdate {
 	private static Label label_LastName = new Label("Last Name:");
 	private static Label label_PreferredFirstName = new Label("Preferred First Name:");
 	private static Label label_EmailAddress = new Label("Email Address:");
+	private static Label label_PhoneNumber = new Label("Phone Number:");
 	
 	// These are dynamic labels and they change based on the user and user interactions.
 	private static Label label_CurrentUsername = new Label();
@@ -80,6 +81,7 @@ public class ViewUserUpdate {
 	private static Label label_CurrentLastName = new Label();
 	private static Label label_CurrentPreferredFirstName = new Label();
 	private static Label label_CurrentEmailAddress = new Label();
+	private static Label label_CurrentPhoneNumber = new Label();
 	
 	// These buttons enable the user to edit the various dynamic fields.  The username and the
 	// passwords for a user are currently not editable.
@@ -90,6 +92,7 @@ public class ViewUserUpdate {
 	private static Button button_UpdateLastName = new Button("Update Last Name");
 	private static Button button_UpdatePreferredFirstName = new Button("Update Preferred First Name");
 	private static Button button_UpdateEmailAddress = new Button("Update Email Address");
+	private static Button button_UpdatePhoneNumber = new Button("Update Phone Number");
 
 	// This button enables the user to finish working on this page and proceed to the user's home
 	// page determined by the user's role at the time of log in.
@@ -104,6 +107,7 @@ public class ViewUserUpdate {
 	private static TextInputDialog dialogUpdateLastName;
 	private static TextInputDialog dialogUpdatePreferredFirstName;
 	private static TextInputDialog dialogUpdateEmailAddresss;
+	private static TextInputDialog dialogUpdatePhoneNumber;
 	private static Alert alertValidationError = new Alert(AlertType.INFORMATION);
 	
 	// These attributes are used to configure the page and populate it with this user's information
@@ -193,6 +197,10 @@ public class ViewUserUpdate {
     	if (s == null || s.length() < 1)label_CurrentEmailAddress.setText("<none>");
     	else label_CurrentEmailAddress.setText(s);
 
+		s = theUser.getPhoneNumber();
+    	if (s == null || s.length() < 1)label_CurrentPhoneNumber.setText("<none>");
+    	else label_CurrentPhoneNumber.setText(s);
+
 		// Set the title for the window, display the page, and wait for the Admin to do something
     	theStage.setTitle("CSE 360 Foundation Code: Update User Account Details");
         theStage.setScene(theUserUpdateScene);
@@ -240,6 +248,10 @@ public class ViewUserUpdate {
 		
 		dialogUpdateEmailAddresss.setTitle("Update Email Address");
 		dialogUpdateEmailAddresss.setHeaderText("Update your Email Address");
+
+		dialogUpdatePhoneNumber = new TextInputDialog("");
+		dialogUpdatePhoneNumber.setTitle("Update Phone Number");
+		dialogUpdatePhoneNumber.setHeaderText("Update your Phone Number");
 
 		alertValidationError.setTitle("Validation Error");
 		alertValidationError.setHeaderText(null);
@@ -374,9 +386,31 @@ public class ViewUserUpdate {
     		});
     		});
         
+        // Phone Number
+        setupLabelUI(label_PhoneNumber, "Arial", 18, 190, Pos.BASELINE_RIGHT, 5, 450);
+        setupLabelUI(label_CurrentPhoneNumber, "Arial", 18, 260, Pos.BASELINE_LEFT, 200, 450);
+        setupButtonUI(button_UpdatePhoneNumber, "Dialog", 18, 275, Pos.CENTER, 500, 443);
+        button_UpdatePhoneNumber.setOnAction((_) -> {result = dialogUpdatePhoneNumber.showAndWait();
+    		result.ifPresent(value -> {
+    			String newValue = value.trim();
+    			String error = ValidationUtil.validatePhoneNumber(newValue);
+    			if (error != null) {
+    				alertValidationError.setContentText(error);
+    				alertValidationError.showAndWait();
+    				return;
+    			}
+    			theDatabase.updatePhoneNumber(theUser.getUserName(), newValue);
+    			theDatabase.getUserAccountDetails(theUser.getUserName());
+    			String newPhone = theDatabase.getCurrentPhoneNumber();
+           		theUser.setPhoneNumber(newPhone);
+        		if (newPhone == null || newPhone.length() < 1)label_CurrentPhoneNumber.setText("<none>");
+        		else label_CurrentPhoneNumber.setText(newPhone);
+    		});
+    		});
+        
         // Set up the button to proceed to this user's home page
         setupButtonUI(button_ProceedToUserHomePage, "Dialog", 18, 300, 
-        		Pos.CENTER, width/2-150, 450);
+        		Pos.CENTER, width/2-150, 500);
         button_ProceedToUserHomePage.setOnAction((_) -> 
         	{ControllerUserUpdate.goToUserHomePage(theStage, theUser);});
     	
@@ -391,7 +425,8 @@ public class ViewUserUpdate {
         		label_LastName, label_CurrentLastName, button_UpdateLastName,
         		label_PreferredFirstName, label_CurrentPreferredFirstName,
         		button_UpdatePreferredFirstName, button_UpdateEmailAddress,
-        		label_EmailAddress, label_CurrentEmailAddress, 
+        		label_EmailAddress, label_CurrentEmailAddress,
+        		label_PhoneNumber, label_CurrentPhoneNumber, button_UpdatePhoneNumber,
         		button_ProceedToUserHomePage);
 	}
 	

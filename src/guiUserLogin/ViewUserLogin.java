@@ -53,11 +53,14 @@ public class ViewUserLogin {
 	protected static PasswordField text_Password = new PasswordField();
 	private static Button button_Login = new Button("Log In");	
 
-	// Email Login Options
-	private static Label label_OrSeparator1 = new Label("or");
-	private static Button button_EmailLogin = new Button("Login with Email");
-	private static Label label_OrSeparator2 = new Label("or");
-	private static Button button_GoogleEmailLogin = new Button("Sign up with Email");
+	// Invitation code for new users
+	private static Label label_InvitationInstructions = new Label("New user? Enter invitation code to sign up");
+	protected static TextField text_InvitationCode = new TextField();
+	private static Button button_UseInvitationCode = new Button("Use Invitation Code");
+	protected static Alert alertInvitationError = new Alert(AlertType.INFORMATION);
+	
+	// Create new account without invitation
+	private static Button button_CreateNewAccount = new Button("Create New Account");
 
 	private static Button button_Quit = new Button("Quit");
 
@@ -87,6 +90,7 @@ public class ViewUserLogin {
 		// state of the system.		
 		text_Username.setText("");		// Reset the username and password from the last use
 		text_Password.setText("");
+		text_InvitationCode.setText("");
 
 		// Set the title for the window, display the page, and wait for the Admin to do something
 		theStage.setTitle("CSE 360 Foundation Code: User Login Page");		
@@ -145,35 +149,31 @@ public class ViewUserLogin {
 		alertUsernamePasswordError.setTitle("Invalid username/password!");
 		alertUsernamePasswordError.setHeaderText(null);
 
-		// Set up the "or" separator label
-		setupLabelUI(label_OrSeparator1, "Arial", 16, 200, Pos.CENTER, 475, 230);
-
-		// Set up the Email Login button
-		setupButtonUI(button_EmailLogin, "Dialog", 18, 200, Pos.CENTER, 475, 260);
-		button_EmailLogin.setStyle("-fx-background-color: #EA4335; -fx-text-fill: white;");
-		button_EmailLogin.setOnAction((_) -> {ControllerUserLogin.doEmailLoginPage(theStage); });
-
-		// Set up the second "or" separator label
-		setupLabelUI(label_OrSeparator2, "Arial", 16, 200, Pos.CENTER, 475, 310);
-
-		// Set up the Google Email Sign Up button
-		setupButtonUI(button_GoogleEmailLogin, "Dialog", 18, 200, Pos.CENTER, 475, 340);
-		button_GoogleEmailLogin.setStyle("-fx-background-color: #4285F4; -fx-text-fill: white;");
-		button_GoogleEmailLogin.setOnAction((_) -> {ControllerUserLogin.doEmailRegistration(theStage); });
+		// Invitation code section
+		setupLabelUI(label_InvitationInstructions, "Arial", 16, width, Pos.CENTER, 0, 260);
+		setupTextUI(text_InvitationCode, "Arial", 18, 220, Pos.BASELINE_LEFT, 50, 300, true);
+		text_InvitationCode.setPromptText("Enter invitation code");
+		setupButtonUI(button_UseInvitationCode, "Dialog", 18, 220, Pos.CENTER, 320, 300);
+		button_UseInvitationCode.setOnAction((_) -> {ControllerUserLogin.doInvitationCode(theStage); });
+		alertInvitationError.setTitle("Invalid Invitation Code");
+		alertInvitationError.setHeaderText(null);
+		
+		// Create new account button
+		setupButtonUI(button_CreateNewAccount, "Dialog", 18, 220, Pos.CENTER, 320, 350);
+		button_CreateNewAccount.setOnAction((_) -> {ControllerUserLogin.doCreateNewAccount(theStage); });
 
 		// Set up the Quit button  
 		setupButtonUI(button_Quit, "Dialog", 18, 250, Pos.CENTER, 300, 520);
 		button_Quit.setOnAction((_) -> {ControllerUserLogin.performQuit(); });
-
-		//		theRootPane.getChildren().clear();
 
 		theRootPane.getChildren().addAll(
 				label_ApplicationTitle, 
 				label_OperationalStartTitle,
 				label_LogInInsrtuctions, text_Username,
 				button_Login, text_Password,
-				label_OrSeparator1, button_EmailLogin,
-				label_OrSeparator2, button_GoogleEmailLogin,
+				label_InvitationInstructions, text_InvitationCode,
+				button_UseInvitationCode,
+				button_CreateNewAccount,
 				button_Quit);
 	}
 

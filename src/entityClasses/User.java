@@ -25,6 +25,7 @@ public class User {
     private String lastName;
     private String preferredFirstName;
     private String emailAddress;
+    private String phoneNumber;
     private boolean adminRole;
     private boolean studentRole;
     private boolean staffRole;
@@ -67,6 +68,7 @@ public class User {
         this.lastName = ln;
         this.preferredFirstName = pfn;
         this.emailAddress = ea;
+        this.phoneNumber = "";
         this.adminRole = r1;
         this.studentRole = r2;
         this.staffRole = r3;
@@ -198,6 +200,17 @@ public class User {
     // Gets the current value of the Student role attribute.
     public String getEmailAddress() { return emailAddress; }
 
+    /*****
+     * <p> Method: String getPhoneNumber() </p>
+     * 
+     * <p> Description: This getter returns the PhoneNumber. </p>
+     * 
+     * @return a String of the PhoneNumber
+	 *
+     */
+    // Gets the current value of the PhoneNumber.
+    public String getPhoneNumber() { return phoneNumber; }
+
     public void setUserName(String s) { userName = s; }
     public void setPassword(String s) { password = s; }
     public void setFirstName(String s) { firstName = s; }
@@ -205,6 +218,7 @@ public class User {
     public void setLastName(String s) { lastName = s; }
     public void setPreferredFirstName(String s) { preferredFirstName = s; }
     public void setEmailAddress(String s) { emailAddress = s; }
+    public void setPhoneNumber(String s) { phoneNumber = s; }
 
     
     /*****

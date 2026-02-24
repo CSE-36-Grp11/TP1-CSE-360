@@ -63,6 +63,22 @@ public class ControllerStudentHome {
 	}
 	
 	/**********
+	 * <p> Method: performBackToLogin() </p>
+	 * 
+	 * <p> Description: This method returns to the login page without logging out. This allows
+	 * another user to login while keeping the current session available.</p>
+	 * 
+	 */
+	protected static void performBackToLogin() {
+		guiUserLogin.ViewUserLogin.displayUserLogin(ViewStudentHome.theStage);
+	}
+
+	protected static void performOpenDiscussion() {
+		guiDiscussion.ViewDiscussionBoard.displayDiscussionBoard(ViewStudentHome.theStage,
+				ViewStudentHome.theUser, ViewStudentHome.theRole);
+	}
+	
+	/**********
 	 * <p> Method: performQuit() </p>
 	 * 
 	 * <p> Description: This method terminates the execution of the program.  It leaves the

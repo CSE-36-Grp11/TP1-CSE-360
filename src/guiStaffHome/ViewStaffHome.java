@@ -55,7 +55,7 @@ public class ViewStaffHome {
 
 	// GUI ARea 2: This is a stub, so there are no widgets here.  For an actual role page, this are
 	// would contain the widgets needed for the user to play the assigned role.
-	
+	protected static Button button_DiscussionBoard = new Button("Discussion Board");
 	
 	
 	// This is a separator and it is used to partition the GUI for various tasks
@@ -63,6 +63,7 @@ public class ViewStaffHome {
 	
 	// GUI Area 3: This is last of the GUI areas.  It is used for quitting the application and for
 	// logging out.
+	protected static Button button_BackToLogin = new Button("Back to Login");
 	protected static Button button_Logout = new Button("Logout");
 	protected static Button button_Quit = new Button("Quit");
 
@@ -163,11 +164,14 @@ public class ViewStaffHome {
 		button_UpdateThisUser.setOnAction((_) -> {ControllerStaffHome.performUpdate(); });
 		
 		// GUI Area 2
-		
-			// This is a stub, so this area is empty
+		setupButtonUI(button_DiscussionBoard, "Dialog", 18, 250, Pos.CENTER, 20, 140);
+		button_DiscussionBoard.setOnAction((_) -> {ControllerStaffHome.performOpenDiscussion(); });
 		
 		
 		// GUI Area 3
+        setupButtonUI(button_BackToLogin, "Dialog", 18, 250, Pos.CENTER, 580, 540);
+        button_BackToLogin.setOnAction((_) -> {ControllerStaffHome.performBackToLogin(); });
+        
         setupButtonUI(button_Logout, "Dialog", 18, 250, Pos.CENTER, 20, 540);
         button_Logout.setOnAction((_) -> {ControllerStaffHome.performLogout(); });
         
@@ -179,7 +183,8 @@ public class ViewStaffHome {
 		// Place all of the widget items into the Root Pane's list of children
         theRootPane.getChildren().addAll(
 			label_PageTitle, label_UserDetails, button_UpdateThisUser, line_Separator1,
-	        line_Separator4, button_Logout, button_Quit);
+			button_DiscussionBoard,
+	        line_Separator4, button_BackToLogin, button_Logout, button_Quit);
 	}
 	
 	

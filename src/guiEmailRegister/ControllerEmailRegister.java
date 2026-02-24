@@ -81,10 +81,23 @@ public class ControllerEmailRegister {
 			return;
 		}
 		
-		// Create the new user account with default role (Role1)
+		// Determine roles based on invitation (default to student if none)
+		String invitedRole = ViewEmailRegister.invitationRole == null ? "" : ViewEmailRegister.invitationRole;
+		boolean adminRole = false;
+		boolean studentRole = false;
+		boolean staffRole = false;
+		if ("admin".equalsIgnoreCase(invitedRole)) {
+			adminRole = true;
+		} else if ("staff".equalsIgnoreCase(invitedRole)) {
+			staffRole = true;
+		} else {
+			studentRole = true;
+		}
+
+		// Create the new user account with role from invitation
 		// Constructor: User(username, password, firstName, middleName, lastName, preferredFirstName, 
 		//              emailAddress, adminRole, role1, role2)
-		User newUser = new User(username, password1, "", "", "", "", email, false, true, false);
+		User newUser = new User(username, password1, "", "", "", "", email, adminRole, studentRole, staffRole);
 		
 		// Add the user to the database
 		try {
@@ -93,6 +106,13 @@ public class ControllerEmailRegister {
 			ViewEmailRegister.alertEmailError.setContentText("Error creating account: " + e.getMessage());
 			ViewEmailRegister.alertEmailError.showAndWait();
 			return;
+		}
+		
+		// Remove invitation after use
+		if (ViewEmailRegister.invitationCode != null && !ViewEmailRegister.invitationCode.isEmpty()) {
+			theDatabase.removeInvitationAfterUse(ViewEmailRegister.invitationCode);
+			ViewEmailRegister.invitationCode = "";
+			ViewEmailRegister.invitationRole = "";
 		}
 		
 		// Show success message

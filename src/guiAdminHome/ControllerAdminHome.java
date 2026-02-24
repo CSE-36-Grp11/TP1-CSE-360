@@ -171,15 +171,38 @@ public class ControllerAdminHome {
 			sb.append("No users found in the system.");
 		} else {
 			for (User user : users) {
-				sb.append(user.getUserName());
+				sb.append("Username: ").append(user.getUserName());
 				sb.append("  [Roles: ");
 				sb.append(formatRoles(user));
 				sb.append("]");
+				
+				// Show name details
+				String firstName = user.getFirstName();
+				String middleName = user.getMiddleName();
+				String lastName = user.getLastName();
+				String preferredName = user.getPreferredFirstName();
+				
+				if ((firstName != null && !firstName.isEmpty()) || 
+				    (middleName != null && !middleName.isEmpty()) || 
+				    (lastName != null && !lastName.isEmpty())) {
+					sb.append("\n  Name: ");
+					if (firstName != null && !firstName.isEmpty()) sb.append(firstName);
+					if (middleName != null && !middleName.isEmpty()) sb.append(" ").append(middleName);
+					if (lastName != null && !lastName.isEmpty()) sb.append(" ").append(lastName);
+					if (preferredName != null && !preferredName.isEmpty()) {
+						sb.append(" (Preferred: ").append(preferredName).append(")");
+					}
+				}
+				
 				String email = user.getEmailAddress();
 				if (email != null && email.length() > 0) {
-					sb.append("  Email: ").append(email);
+					sb.append("\n  Email: ").append(email);
 				}
-				sb.append("\n");
+				String phone = user.getPhoneNumber();
+				if (phone != null && phone.length() > 0) {
+					sb.append("\n  Phone: ").append(phone);
+				}
+				sb.append("\n\n");
 			}
 		}
 
@@ -241,6 +264,35 @@ public class ControllerAdminHome {
 	 */
 	protected static void performLogout() {
 		guiUserLogin.ViewUserLogin.displayUserLogin(ViewAdminHome.theStage);
+	}
+	
+	/**********
+	 * <p> 
+	 * 
+	 * Title: performBackToLogin () Method. </p>
+	 * 
+	 * <p> Description: Protected method that returns to the user login page without logging out.
+	 * This allows another user to login while keeping the current session available.</p>
+	 */
+	protected static void performBackToLogin() {
+		guiUserLogin.ViewUserLogin.displayUserLogin(ViewAdminHome.theStage);
+	}
+	
+	/**********
+	 * <p> 
+	 * 
+	 * Title: inviteUsers () Method. </p>
+	 * 
+	 * <p> Description: Protected method that displays the Invite Users page where admins can
+	 * generate invitation codes for new users.</p>
+	 */
+	protected static void inviteUsers() {
+		guiInviteUsers.ViewInviteUsers.displayInviteUsers(ViewAdminHome.theStage, ViewAdminHome.theUser);
+	}
+
+	protected static void openDiscussionBoard() {
+		guiDiscussion.ViewDiscussionBoard.displayDiscussionBoard(ViewAdminHome.theStage,
+				ViewAdminHome.theUser, 1);
 	}
 	
 	/**********
