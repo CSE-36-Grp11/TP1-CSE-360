@@ -1,10 +1,18 @@
 package applicationMain;
 
 /**
- * Test class to verify username validation behavior
+ * Supporting validation test class for ASU username rules.
+ *
+ * <p>This class provides focused validation checks for username constraints used by
+ * post/reply author fields. It is included as supporting evidence in StudentPostTests.
  */
 public class UsernameValidationTest {
     
+    /**
+     * Executes a sequence of username validation checks.
+     *
+     * @param args command-line arguments (not used)
+     */
     public static void main(String[] args) {
         System.out.println("=== Username Validation Tests ===\n");
         
@@ -50,6 +58,12 @@ public class UsernameValidationTest {
         System.out.println("\n=== All tests completed ===");
     }
     
+    /**
+     * Helper that runs one validation case and prints pass/fail output details.
+     *
+     * @param username candidate username input
+     * @param testDescription label for the validation case
+     */
     private static void testValidation(String username, String testDescription) {
         String error = ValidationUtil.validateAsuUserId(username);
         
