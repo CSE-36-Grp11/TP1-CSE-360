@@ -6,12 +6,18 @@ public class Reply {
 	private int postId;
 	private String body;
 	private String authorAsuUserId;
+	private String originalPostAuthorAsuUserId;
 
 	public Reply(int replyId, int postId, String body, String authorAsuUserId) {
+		this(replyId, postId, body, authorAsuUserId, null);
+	}
+
+	public Reply(int replyId, int postId, String body, String authorAsuUserId, String originalPostAuthorAsuUserId) {
 		this.replyId = replyId;
 		this.postId = postId;
 		this.body = body;
 		this.authorAsuUserId = authorAsuUserId;
+		this.originalPostAuthorAsuUserId = originalPostAuthorAsuUserId;
 	}
 
 	public int getReplyId() {
@@ -44,5 +50,13 @@ public class Reply {
 
 	public void setAuthorAsuUserId(String authorAsuUserId) {
 		this.authorAsuUserId = authorAsuUserId;
+	}
+
+	public String getOriginalPostAuthorAsuUserId() {
+		return originalPostAuthorAsuUserId;
+	}
+
+	public void setOriginalPostAuthorAsuUserId(String originalPostAuthorAsuUserId) {
+		this.originalPostAuthorAsuUserId = originalPostAuthorAsuUserId;
 	}
 }

@@ -28,6 +28,14 @@ public class DiscussionService {
 		return INSTANCE;
 	}
 
+	public PostList getPostList() {
+		return postList;
+	}
+
+	public ReplyList getReplyList() {
+		return replyList;
+	}
+
 	public String createPost(String title, String body, String authorAsuUserId) {
 		String titleError = ValidationUtil.validatePostTitle(title);
 		if (titleError != null) {
