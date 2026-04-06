@@ -1,3 +1,7 @@
-entityClasses/User.class
-database/Database.class
+guiStudentHome/ViewStudentHome.class
 module-info.class
+guiUserUpdate/Model.class
+database/Database.class
+guiMultipleRoleDispatch/ModelMultipleRoleDispatch.class
+guiAdminHome/ControllerAdminHome.class
+entityClasses/User.class
