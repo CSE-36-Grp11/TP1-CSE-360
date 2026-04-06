@@ -1,15 +1,3 @@
-entityClasses/Reply.class
-guiMultipleRoleDispatch/ControllerMultipleRoleDispatch.class
-guiInviteUsers/ModelInviteUsers.class
 entityClasses/User.class
-applicationMain/ValidationUtil.class
-guiAddRemoveRoles/ControllerAddRemoveRoles.class
-entityClasses/Post.class
 database/Database.class
-entityClasses/PostList.class
 module-info.class
-applicationMain/FoundationsMain.class
-guiStaffHome/ModelStaffHome.class
-entityClasses/ReplyList.class
-guiStaffHome/ControllerStaffHome.class
-applicationMain/HW2CrudValidationTest.class
