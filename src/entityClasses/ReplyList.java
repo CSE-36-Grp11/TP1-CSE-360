@@ -29,6 +29,8 @@ public class ReplyList {
 			return "Reply ID already exists.";
 		}
 
+		reply.setBody(sanitizeForHtml(reply.getBody()));
+
 		allReplies.add(reply);
 		return null;
 	}
@@ -75,7 +77,7 @@ public class ReplyList {
 			return bodyError;
 		}
 
-		existing.setBody(newBody.trim());
+		existing.setBody(sanitizeForHtml(newBody));
 		return null;
 	}
 
@@ -140,5 +142,15 @@ public class ReplyList {
 		}
 
 		return null;
+	}
+
+	private String sanitizeForHtml(String value) {
+		String trimmed = value == null ? "" : value.trim();
+		return trimmed
+				.replace("&", "&amp;")
+				.replace("<", "&lt;")
+				.replace(">", "&gt;")
+				.replace("\"", "&quot;")
+				.replace("'", "&#39;");
 	}
 }

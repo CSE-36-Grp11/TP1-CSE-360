@@ -77,6 +77,10 @@ public class ControllerStaffHome {
 		guiDiscussion.ViewDiscussionBoard.displayDiscussionBoard(ViewStaffHome.theStage,
 				ViewStaffHome.theUser, ViewStaffHome.theRole);
 	}
+
+	protected static void performOpenTeacherGradebook() {
+		guiGradebook.ViewGradebook.displayGradebook(ViewStaffHome.theStage, ViewStaffHome.theUser);
+	}
 	
 	/**********
 	 * <p> Method: performQuit() </p>

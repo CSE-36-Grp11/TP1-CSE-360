@@ -294,6 +294,10 @@ public class ControllerAdminHome {
 		guiDiscussion.ViewDiscussionBoard.displayDiscussionBoard(ViewAdminHome.theStage,
 				ViewAdminHome.theUser, 1);
 	}
+
+	protected static void openTeacherGradebook() {
+		guiGradebook.ViewGradebook.displayGradebook(ViewAdminHome.theStage, ViewAdminHome.theUser);
+	}
 	
 	/**********
 	 * <p> 

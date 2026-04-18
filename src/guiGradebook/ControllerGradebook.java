@@ -32,6 +32,10 @@ public class ControllerGradebook {
 	}
 
 	protected static void performReturn() {
+		if (ViewGradebook.theUser != null && ViewGradebook.theUser.getAdminRole()) {
+			guiAdminHome.ViewAdminHome.displayAdminHome(ViewGradebook.theStage, ViewGradebook.theUser);
+			return;
+		}
 		guiStaffHome.ViewStaffHome.displayStaffHome(ViewGradebook.theStage, ViewGradebook.theUser);
 	}
 }
