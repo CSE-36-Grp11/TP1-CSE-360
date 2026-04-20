@@ -1,0 +1,4 @@
+test/java/entityClasses/PostListTest.java
+test/java/entityClasses/ReplyListTest.java
+test/java/applicationMain/ValidationUtilTest.java
+test/java/applicationMain/GradingServiceTest.java

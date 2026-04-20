@@ -1,5 +1,14 @@
 package applicationMain;
 
+/**
+ * Utility class for validating and sanitizing script inputs.
+ * <p>
+ * JUnit tests used: {@link applicationMain.ValidationUtilTest}
+ * nSemi-automated tests used: In-built test cases (HW2CrudValidationTest, UsernameValidationTest)
+ * nManual tests used: Scripting constraints manual testing (see Manual Tests.pdf)
+ * </p>
+ */
+
 public class ValidationUtil {
 
 	private ValidationUtil() {

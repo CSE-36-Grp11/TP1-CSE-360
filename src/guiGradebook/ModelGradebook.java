@@ -14,6 +14,24 @@ import entityClasses.Reply;
 import entityClasses.ReplyList;
 import entityClasses.User;
 
+/**
+ * Model for the Teacher Gradebook.
+ * <p>
+ * JUnit tests used: {@link applicationMain.GradingServiceTest}, {@link applicationMain.FoundationsS26Test}
+ * nSemi-automated tests used: N/A
+ * nManual tests used: Gradebook Logic Manual Testing (see Manual Tests.pdf)
+ * </p>
+ */
+
+/**
+ * Model for the Teacher Gradebook.
+ * <p>
+ * JUnit tests used: {@link applicationMain.GradingServiceTest}, {@link applicationMain.FoundationsS26Test}
+ * nSemi-automated tests used: N/A
+ * nManual tests used: Gradebook Logic Manual Testing (see Manual Tests.pdf)
+ * </p>
+ */
+
 public class ModelGradebook {
 
 	private final PostList postList;

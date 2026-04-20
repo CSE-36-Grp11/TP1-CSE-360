@@ -2,6 +2,24 @@ package guiGradebook;
 
 import java.util.List;
 
+/**
+ * Controller for the Teacher Gradebook.
+ * <p>
+ * JUnit tests used: {@link applicationMain.FoundationsS26Test}
+ * nSemi-automated tests used: N/A
+ * nManual tests used: Gradebook UI Manual Testing, 3-Unique Reply UI Testing (see Manual Tests.pdf)
+ * </p>
+ */
+
+/**
+ * Controller for the Teacher Gradebook.
+ * <p>
+ * JUnit tests used: {@link applicationMain.FoundationsS26Test}
+ * nSemi-automated tests used: N/A
+ * nManual tests used: Gradebook UI Manual Testing, 3-Unique Reply UI Testing (see Manual Tests.pdf)
+ * </p>
+ */
+
 public class ControllerGradebook {
 
 	private static final ModelGradebook model = new ModelGradebook();

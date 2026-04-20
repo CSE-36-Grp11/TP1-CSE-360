@@ -12,6 +12,24 @@ import entityClasses.PostList;
 import entityClasses.Reply;
 import entityClasses.ReplyList;
 
+/**
+ * Service class for grading student discussions based on their replies.
+ * <p>
+ * JUnit tests used: {@link applicationMain.GradingServiceTest}
+ * nSemi-automated tests used: N/A
+ * nManual tests used: GradingService Manual Tests (see Manual Tests.pdf)
+ * </p>
+ */
+
+/**
+ * Service class for grading student discussions based on their replies.
+ * <p>
+ * JUnit tests used: {@link applicationMain.GradingServiceTest}
+ * nSemi-automated tests used: N/A
+ * nManual tests used: GradingService Manual Tests (see Manual Tests.pdf)
+ * </p>
+ */
+
 public class GradingService {
 
 	// In-memory list of posts used to resolve reply targets and authors.

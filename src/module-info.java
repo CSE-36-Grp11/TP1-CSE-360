@@ -1,4 +1,4 @@
-module FoundationsF25 {
+module FoundationsS26 {
 	requires javafx.controls;
 	requires java.sql;
 	

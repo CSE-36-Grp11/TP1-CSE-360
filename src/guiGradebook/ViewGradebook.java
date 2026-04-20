@@ -17,6 +17,24 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+/**
+ * View for the Teacher Gradebook showing student participation.
+ * <p>
+ * JUnit tests used: {@link applicationMain.FoundationsS26Test}
+ * nSemi-automated tests used: N/A
+ * nManual tests used: ViewGradebook Display Tests (see Manual Tests.pdf)
+ * </p>
+ */
+
+/**
+ * View for the Teacher Gradebook showing student participation.
+ * <p>
+ * JUnit tests used: {@link applicationMain.FoundationsS26Test}
+ * nSemi-automated tests used: N/A
+ * nManual tests used: ViewGradebook Display Tests (see Manual Tests.pdf)
+ * </p>
+ */
+
 public class ViewGradebook {
 
 	private static double width = applicationMain.FoundationsMain.WINDOW_WIDTH;

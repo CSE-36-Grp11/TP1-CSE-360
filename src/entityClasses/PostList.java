@@ -5,6 +5,15 @@ import java.util.List;
 
 import applicationMain.ValidationUtil;
 
+/**
+ * Entity representing a list of posts, including logic to prevent script injection.
+ * <p>
+ * JUnit tests used: {@link entityClasses.PostListTest}
+ * nSemi-automated tests used: In-built test cases (HW2CrudValidationTest)
+ * nManual tests used: Post List Logic Manual Testing (see Manual Tests.pdf)
+ * </p>
+ */
+
 public class PostList {
 
 	private final List<Post> allPosts;
